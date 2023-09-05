@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons>
+     <ion-back-button defaultHref="/home"></ion-back-button>
+     <ion-title>Sender</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true">
+
+<ion-list lines="none" *ngIf="(chats) as chats">
+  <ion-item-group class="chats-group" *ngFor="let chat of chats">
+    <app-chat-box chat="chat"></app-chat-box>
+  </ion-item-group>
+
+</ion-list>
+
+
+
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-textarea
+    autoGrow
+    rows="1"
+    placeholder="Send message"
+    class="ion-text-center">
+    </ion-textarea>
+    <ion-buttons slot="end">
+     <ion-fab-button size="small" color="primary"><ion-icon size="medium" name="send-sharp"></ion-icon></ion-fab-button> 
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

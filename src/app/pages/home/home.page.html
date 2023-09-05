@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title >Live Chat</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" id="popover">
+        <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+<ion-popover #popover trigger="popover" triggerAction="click">
+  <ng-template>
+    <ion-content class="ion-padding ion-text-center" (click)="logout()">
+     <ion-label color="danger">Logout</ion-label>
+    </ion-content>
+  </ng-template>
+</ion-popover>
+  </ion-toolbar>
+  <ion-segment [value]="segment" mode="md" (ionChange)="onSegmentChanged($event)">
+    <ion-segment-button value="Status">
+      <ion-label>Status</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Chats">
+      <ion-label>Chats</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Calls">
+      <ion-label>Calls</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+<ion-content color="light">
+  <ion-list *ngIf="segment == 'chats'">
+    
+    <ion-list-header class="ion-padding-bottom" color="light">
+      RECENT CHATS
+    </ion-list-header>
+    <ion-item 
+    *ngFor="let item of [1,2,3,4,5,6]" 
+    (click)="getchat(item)" 
+    detail="true">
+      <ion-avatar slot="start">
+        <img src="https://i.pravatar.cc/385" alt="">
+      </ion-avatar>
+      <ion-label>
+        Akash
+        <p>
+          <ion-text>message</ion-text>
+        </p>
+      </ion-label>
+      <ion-text slot="end" color="medium">10:12 am</ion-text>
+    </ion-item>
+    
+
+  </ion-list>
+  <ion-fab slot="fixed" horizontal="end" vertical="bottom">
+    <ion-fab-button (click)="newchat()">
+    <ion-icon name="add-outline"></ion-icon>
+  </ion-fab-button>
+  </ion-fab>
+</ion-content>
